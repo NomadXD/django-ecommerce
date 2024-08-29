@@ -1,0 +1,113 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!-- Hero section -->
+<section class="py-5 bg-light">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-dark">
+      <h1 class="display-4 fw-bolder">Welcome to Textile Treasures</h1>
+      <p class="lead fw-normal text-muted mb-0">
+        Discover our exquisite collection of fabrics, yarns, and accessories
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Featured products section -->
+<section class="py-5">
+  <div class="container px-4 px-lg-5 mt-5">
+    <h2 class="fw-bolder mb-4">Featured Products</h2>
+    <div
+      class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
+    >
+      {% for product in featured_products %}
+      <div class="col mb-5">
+        <div class="card h-100">
+          <!-- Product image -->
+          {% if product.image %}
+          <img
+            class="card-img-top"
+            src="{{ product.image.url }}"
+            alt="{{ product.name }}"
+          />
+          {% else %}
+          <img
+            class="card-img-top"
+            src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+            alt="{{ product.name }}"
+          />
+          {% endif %}
+          <!-- Product details -->
+          <div class="card-body p-4">
+            <div class="text-center">
+              <!-- Product name -->
+              <h5 class="fw-bolder">{{ product.name }}</h5>
+              <!-- Product category -->
+              <div class="small mb-1">{{ product.get_category_display }}</div>
+              <!-- Product price -->
+              ${{ product.price }}
+            </div>
+          </div>
+          <!-- Product actions -->
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center">
+              <a class="btn btn-outline-dark mt-auto" href="#">View details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Categories section -->
+<section class="py-5 bg-light">
+  <div class="container px-4 px-lg-5 mt-5">
+    <h2 class="fw-bolder mb-4">Browse Categories</h2>
+    <div
+      class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-3 justify-content-center"
+    >
+      <div class="col mb-5">
+        <div class="card h-100">
+          <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+            <div
+              class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"
+            >
+              <i class="bi bi-collection"></i>
+            </div>
+            <h2 class="fs-4 fw-bold">Fabrics</h2>
+            <p class="mb-0">Explore our wide range of high-quality fabrics</p>
+          </div>
+        </div>
+      </div>
+      <div class="col mb-5">
+        <div class="card h-100">
+          <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+            <div
+              class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"
+            >
+              <i class="bi bi-cloud-download"></i>
+            </div>
+            <h2 class="fs-4 fw-bold">Yarns</h2>
+            <p class="mb-0">Discover our collection of premium yarns</p>
+          </div>
+        </div>
+      </div>
+      <div class="col mb-5">
+        <div class="card h-100">
+          <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+            <div
+              class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"
+            >
+              <i class="bi bi-card-heading"></i>
+            </div>
+            <h2 class="fs-4 fw-bold">Accessories</h2>
+            <p class="mb-0">
+              Find the perfect accessories for your textile projects
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
