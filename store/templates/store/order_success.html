@@ -1,6 +1,43 @@
 {% extends "store/base.html" %} {% block content %}
+<style>
+  .order-success-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  .order-success-container h2 {
+    color: #28a745;
+    margin-bottom: 20px;
+  }
+
+  .order-success-container p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
+
+  .order-success-container .btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+  .order-success-container .btn:hover {
+    background-color: #0056b3;
+  }
+</style>
+
 <div class="order-success-container">
   <h2>Order Successful</h2>
   <p>Thank you for your order! We will process it shortly.</p>
+  <a href="{% url 'home' %}" class="btn">Continue Shopping</a>
 </div>
 {% endblock %}
