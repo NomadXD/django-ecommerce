@@ -3,6 +3,8 @@ from django.contrib import messages
 from .models import Product
 from .forms import CheckoutForm
 from .models import Order, OrderItem
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login as auth_login
 
 def home(request):
     featured_products = Product.objects.all()[:4]  # Get 4 featured products
@@ -77,3 +79,14 @@ def checkout(request):
 
 def order_success(request):
     return render(request, 'store/order_success.html')
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'store/signup.html', {'form': form})

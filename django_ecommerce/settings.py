@@ -139,3 +139,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.choreoapps.dev',
     # Add other trusted origins if necessary
 ]
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
