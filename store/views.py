@@ -5,6 +5,7 @@ from .forms import CheckoutForm
 from .models import Order, OrderItem
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     featured_products = Product.objects.all()[:4]  # Get 4 featured products
@@ -61,7 +62,9 @@ def checkout(request):
     if request.method == 'POST':
         form = CheckoutForm(request.POST)
         if form.is_valid():
-            order = form.save()
+            order = form.save(commit=False)
+            order.user = request.user
+            order.save()
             cart = request.session.get('cart', {})
             for product_id, quantity in cart.items():
                 product = Product.objects.get(id=product_id)
@@ -90,3 +93,8 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'store/signup.html', {'form': form})
+
+@login_required
+def order_history(request):
+    orders = Order.objects.filter(user=request.user).prefetch_related('items').order_by('-order_date')
+    return render(request, 'store/order_history.html', {'orders': orders})

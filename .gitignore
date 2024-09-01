@@ -1,0 +1,9 @@
+
+# Django
+*.log
+*.pyc
+*.pyo
+*.pyd
+django_ecommerce/__pycache__/*
+# Static files
+staticfiles
