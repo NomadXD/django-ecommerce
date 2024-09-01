@@ -74,6 +74,10 @@
     </tbody>
   </table>
   <p class="total">Total: ${{ total }}</p>
-  <a href="{{ checkout_url }}" class="btn btn-primary">Proceed to Checkout</a>
+  <div class="d-flex justify-content-center">
+    <a class="btn btn-dark" href="{% url 'checkout' %}">
+      <i class="bi bi-cart-check me-1"></i> Proceed to Checkout
+    </a>
+  </div>
 </div>
 {% endblock %}
