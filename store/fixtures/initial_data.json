@@ -1,0 +1,54 @@
+[
+  {
+    "model": "store.product",
+    "pk": 1,
+    "fields": {
+      "name": "Silk Brocade",
+      "description": "Luxurious silk brocade fabric with intricate floral patterns.",
+      "price": 59.99,
+      "image": "products/roberto-lopez-nYVfiHu5OIs-unsplash_H7oHi3h.jpg",
+      "category": "fabric",
+      "color": "Gold",
+      "material": "Silk"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 2,
+    "fields": {
+      "name": "Merino Wool Yarn",
+      "description": "Soft and warm merino wool yarn, perfect for cozy sweaters.",
+      "price": 12.99,
+      "image": "products/margarida-afonso-ahMCpXdUjv0-unsplash.jpg",
+      "category": "yarn",
+      "color": "Navy Blue",
+      "material": "Merino Wool"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 3,
+    "fields": {
+      "name": "Embroidery Hoop Set",
+      "description": "Set of 3 bamboo embroidery hoops in various sizes.",
+      "price": 15.99,
+      "image": "products/mel-poole-LlX6BlViuUg-unsplash.jpg",
+      "category": "accessories",
+      "color": "Natural",
+      "material": "Bamboo"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 4,
+    "fields": {
+      "name": "Cotton Batik",
+      "description": "Handmade batik fabric with vibrant traditional patterns.",
+      "price": 29.99,
+      "image": "products/lida-sahafzadeh-UMo3_QxeIRI-unsplash.jpg",
+      "category": "fabric",
+      "color": "Multi-color",
+      "material": "Cotton"
+    }
+  }
+]
