@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
+import json
 import dj_database_url
 from pathlib import Path
 from decouple import config, Csv
@@ -17,7 +18,23 @@ from decouple import config, Csv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-print("BASE_DIR LOCATION", BASE_DIR)
+# Path to the config file
+CONFIG_FILE_PATH = os.path.join(BASE_DIR, 'config.json')
+
+# Default to SQLite
+DATABASE_URL = 'sqlite:///db.sqlite3'
+
+# Read the database URL from the config file if it exists
+if os.path.exists(CONFIG_FILE_PATH):
+    with open(CONFIG_FILE_PATH) as config_file:
+        config = json.load(config_file)
+        DATABASE_URL = config.get('DATABASE_URL', DATABASE_URL)
+
+# Parse the database URL
+
+DATABASES = {
+    'default': dj_database_url.parse(DATABASE_URL)
+}
 
 
 # Quick-start development settings - unsuitable for production
@@ -74,18 +91,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'django_ecommerce.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-# Read the DATABASE_URL environment variable
-DATABASE_URL = config('DATABASE_URL', default='sqlite:///db.sqlite3')
-
-# Parse the database URL
-
-DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL)
-}
 
 
 # Password validation
